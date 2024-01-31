@@ -1,0 +1,18 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            // "args": ["D:/2024/3DGS/gaussian-splatting/output/myset/train/ours_7000/event/raw.dat"],
+            "args": ["--h5file", "D:/2024/3DGS/gaussian-splatting/output/myset/train/ours_7000/event/raw.h5","--freq_hz","350","-c", "D:/2024/3DGS/e2calib/E2VID_lightweight.pth.tar","--width","980","--height","545"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

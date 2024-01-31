@@ -12,6 +12,7 @@ from data.rectimestamps import TimestampProviderFile, TimestampProviderRate
 import e2vid
 from e2vid.options.inference_options import set_inference_options
 from e2vid.utils.voxelgrid import VoxelGrid
+import urllib
 
 
 
@@ -47,7 +48,14 @@ if __name__ == "__main__":
     data_provider = DataProvider(h5_path, height=args.height, width=args.width, timestamp_provider=timestamp_provider)
 
     # Load model to device
-    reconstructor = e2vid.E2VID(args)
+    try:
+        reconstructor = e2vid.E2VID(args)
+    except urllib.error.URLError as e:
+        print(f"Error opening URL: {e}")
+    except FileNotFoundError as e:
+        print(f"Error opening file: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
     if not os.path.exists(args.output_folder):
         os.makedirs(args.output_folder)
